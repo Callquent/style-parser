@@ -5,9 +5,9 @@
  * style-parser CLI
  *
  * Commands:
- *   style-parser build <file.style> [format]   Compile a .style file (default: css)
- *   style-parser convert <file.css>            Convert a CSS file to .style YAML
- *   style-parser lint <file.style>             Lint a .style file
+ *   style-parser build <file.ycss> [format]   Compile a .ycss file (default: css)
+ *   style-parser convert <file.css>            Convert a CSS file to .ycss YAML
+ *   style-parser lint <file.ycss>             Lint a .ycss file
  */
 
 const fs   = require('fs');
@@ -32,12 +32,12 @@ switch (command) {
   case 'build': {
     const [fileArg, fmtArg = 'css'] = args;
     if (!fileArg) {
-      // fallback: look for test.style in cwd
-      const fallback = path.join(process.cwd(), 'test.style');
+      // fallback: look for test.ycss in cwd
+      const fallback = path.join(process.cwd(), 'test.ycss');
       if (fs.existsSync(fallback)) {
         buildFile(fallback, fmtArg);
       } else {
-        console.error('Usage: style-parser build <file.style> [css|sass|js]');
+        console.error('Usage: style-parser build <file.ycss> [css|sass|js]');
         process.exit(1);
       }
     } else {
@@ -53,7 +53,7 @@ switch (command) {
       process.exit(1);
     }
     const abs    = resolveFile(fileArg);
-    const output = abs.replace(/\.css$/, '.style');
+    const output = abs.replace(/\.css$/, '.ycss');
     try {
       const yaml = convertCSS(abs);
       fs.writeFileSync(output, yaml, 'utf8');
@@ -68,7 +68,7 @@ switch (command) {
   case 'lint': {
     const [fileArg] = args;
     if (!fileArg) {
-      console.error('Usage: style-parser lint <file.style>');
+      console.error('Usage: style-parser lint <file.ycss>');
       process.exit(1);
     }
     const abs  = resolveFile(fileArg);
@@ -87,17 +87,17 @@ switch (command) {
   }
 
   default: {
-    console.log(`style-parser — CSS / SASS / JS compiler for .style files
+    console.log(`style-parser — CSS / SASS / JS compiler for .ycss files
 
 Commands:
-  build   <file.style> [format]   Compile to css (default), sass, or js
-  convert <file.css>              Convert CSS → .style YAML
-  lint    <file.style>            Lint a .style file
+  build   <file.ycss> [format]   Compile to css (default), sass, or js
+  convert <file.css>              Convert CSS → .ycss YAML
+  lint    <file.ycss>            Lint a .ycss file
 
 Examples:
-  style-parser build   button.style css
+  style-parser build   button.ycss css
   style-parser convert input.css
-  style-parser lint    button.style
+  style-parser lint    button.ycss
 `);
     break;
   }
@@ -108,7 +108,7 @@ function buildFile(abs, format) {
     console.error(`✖ Unknown format "${format}". Available: ${FORMATS.join(', ')}`);
     process.exit(1);
   }
-  const output = abs.replace(/\.style$/, EXT[format]);
+  const output = abs.replace(/\.ycss$/, EXT[format]);
   try {
     const result = compile(abs, format);
     fs.writeFileSync(output, result, 'utf8');

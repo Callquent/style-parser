@@ -4,7 +4,7 @@
  * build.js — script de compilation du projet
  *
  * Usage direct :   node build.js [format]
- * Via CLI :        style-parser build test.style [format]
+ * Via CLI :        style-parser build test.ycss [format]
  *
  * Formats : css (défaut), sass, js
  */
@@ -16,7 +16,7 @@ const path = require('path');
 const format = process.argv[2] ?? 'css';
 const EXT    = { css: '.css', sass: '.scss', js: '.js' };
 
-const input  = path.join(__dirname, 'test.style');
+const input  = path.join(__dirname, 'test.ycss');
 const output = path.join(__dirname, `test${EXT[format] ?? '.' + format}`);
 
 try {
