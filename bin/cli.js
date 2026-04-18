@@ -49,11 +49,11 @@ switch (command) {
   case 'convert': {
     const [fileArg] = args;
     if (!fileArg) {
-      console.error('Usage: style-parser convert <file.css>');
+      console.error('Usage: style-parser convert <file.css|less|scss>');
       process.exit(1);
     }
     const abs    = resolveFile(fileArg);
-    const output = abs.replace(/\.css$/, '.ycss');
+    const output = abs.replace(/\.(css|less|scss|sass)$/, '.ycss');
     try {
       const yaml = convertCSS(abs);
       fs.writeFileSync(output, yaml, 'utf8');
