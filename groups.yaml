@@ -1,0 +1,122 @@
+groups:
+  # ─── Positionnement & disposition ───────────────────────────────────────────
+  structure:
+    defaults:
+      display: block
+      flex-direction: row
+    properties:
+      - layout
+      - center
+      - display
+      - flex-direction
+      - flex-wrap
+      - flex-grow
+      - flex-shrink
+      - flex-basis
+      - flex
+      - gap
+      - align-items
+      - align-self
+      - justify-content
+
+  # ─── Modèle de boîte ────────────────────────────────────────────────────────
+  box:
+    defaults:
+      padding: 0
+      margin: 0
+      border: none
+      radius: 0
+      shadow: none
+      sizing: content-box
+    properties:
+      - padding
+      - padding-top
+      - padding-right
+      - padding-bottom
+      - padding-left
+      - margin
+      - margin-top
+      - margin-right
+      - margin-bottom
+      - margin-left
+      - border
+      - border-top
+      - border-right
+      - border-bottom
+      - border-left
+      - border-color
+      - border-width
+      - border-style
+      - radius
+      - shadow
+      - sizing
+      - border-radius
+      - border-top-left-radius
+      - border-top-right-radius
+      - border-bottom-left-radius
+      - border-bottom-right-radius
+      - width
+      - height
+      - min-width
+      - max-width
+      - min-height
+      - max-height
+      - overflow
+      - overflow-x
+      - overflow-y
+
+  # ─── Typographie ─────────────────────────────────────────────────────────────
+  typo:
+    defaults:
+      size: inherit
+      weight: normal
+      line-height: normal
+    properties:
+      - size
+      - weight
+      - font-family
+      - font-style
+      - line-height
+      - letter-spacing
+      - text-align
+      - text-transform
+      - text-decoration
+      - white-space
+      - word-break
+      - text-overflow
+
+  # ─── Apparence (couleurs, fonds) ─────────────────────────────────────────────
+  uiProps:
+    defaults: {}
+    properties:
+      - background
+      - background-image
+      - background-size
+      - color
+      - opacity
+
+  # ─── Position CSS (position, top, left…) ─────────────────────────────────────
+  position:
+    defaults:
+      position: relative
+      z-index: auto
+    # Note : la propriété "position" est sérialisée comme objet
+    # { type, offset: { top, right, bottom, left }, z-index } dans le converter.
+    properties:
+      - position
+      - top
+      - right
+      - bottom
+      - left
+      - z-index
+      - float
+      - clear
+
+  # ─── Interactions & transitions ───────────────────────────────────────────────
+  interactions:
+    defaults: {}
+    properties:
+      - cursor
+      - transition
+      - transform
+      - visibility
