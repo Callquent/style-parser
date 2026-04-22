@@ -1,6 +1,7 @@
 groups:
+
   # ─── Positionnement & disposition ───────────────────────────────────────────
-  structure:
+  layout:
     defaults:
       display: block
       flex-direction: row
@@ -91,7 +92,6 @@ groups:
     properties:
       - background
       - background-image
-      - background-size
       - color
       - opacity
 
@@ -100,8 +100,6 @@ groups:
     defaults:
       position: relative
       z-index: auto
-    # Note : la propriété "position" est sérialisée comme objet
-    # { type, offset: { top, right, bottom, left }, z-index } dans le converter.
     properties:
       - position
       - top
