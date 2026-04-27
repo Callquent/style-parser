@@ -1,0 +1,28 @@
+selectors:
+  pseudo-elements:
+    - "::before"
+    - "::after"
+    - "::first-line"
+    - "::first-letter"
+    - "::selection"
+    - "::placeholder"
+    - "::marker"
+    - "::backdrop"
+  states:
+    - ":hover"
+    - ":active"
+    - ":focus"
+    - ":visited"
+    - ":checked" 
+    - ":disabled"
+    - ":first-child"
+    - ":last-child"
+    - ":nth-child"
+    - ":not"
+    - ":empty"
+    - ":target"
+  miscellaneous:
+    - ":root"
+    - "::slotted(*)"
+    - ":host"
+    - ":host-context"
